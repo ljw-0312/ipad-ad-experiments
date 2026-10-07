@@ -1,0 +1,1006 @@
+{
+  "status": "passed",
+  "notes": [
+    "Same cached features, tracks, shared frames and normal-only partitions.",
+    "Nearest normal uses all fit examples; no test labels used for fitting/calibration.",
+    "Follow-up motivated by observed R01 results: exploratory, not independent confirmation.",
+    "Nearest neighbour is a diagnostic baseline, not a claimed novel method."
+  ],
+  "shared_frames": 3042,
+  "total_frames": 3685,
+  "shared_coverage": 0.8255088195386703,
+  "variants": {
+    "pca_residual": {
+      "seconds": 11.523672689000023,
+      "models": {
+        "A": {
+          "shared_auroc": 0.6853465058311955,
+          "shared_ap": 0.4907319331341137,
+          "coverage": 1,
+          "all_frame_decisions": {
+            "tp": 0,
+            "fp": 29,
+            "fn_known": 1254,
+            "tn": 2402,
+            "precision": 0,
+            "recall_known": 0,
+            "recall_all": 0,
+            "normal_frame_false_positive_rate_known": 0.01192924722336487
+          },
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "shared_frames": 201,
+              "anomaly_frames": 141,
+              "auroc": 0.38427895981087473,
+              "average_precision": 0.6904826583240335
+            },
+            {
+              "sequence": "02",
+              "shared_frames": 233,
+              "anomaly_frames": 127,
+              "auroc": 0.500594265339474,
+              "average_precision": 0.5626598701255189
+            },
+            {
+              "sequence": "03",
+              "shared_frames": 340,
+              "anomaly_frames": 195,
+              "auroc": 0.48091954022988503,
+              "average_precision": 0.5216287406639076
+            },
+            {
+              "sequence": "04",
+              "shared_frames": 150,
+              "anomaly_frames": 90,
+              "auroc": 0.25666666666666665,
+              "average_precision": 0.46738488988833016
+            },
+            {
+              "sequence": "05",
+              "shared_frames": 252,
+              "anomaly_frames": 92,
+              "auroc": 0.47133152173913045,
+              "average_precision": 0.3355379083128205
+            },
+            {
+              "sequence": "06",
+              "shared_frames": 182,
+              "anomaly_frames": 182,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "shared_frames": 192,
+              "anomaly_frames": 171,
+              "auroc": 0.5416318574213311,
+              "average_precision": 0.9197525767874067
+            },
+            {
+              "sequence": "08",
+              "shared_frames": 188,
+              "anomaly_frames": 184,
+              "auroc": 0.39809782608695654,
+              "average_precision": 0.9700207695458503
+            },
+            {
+              "sequence": "09",
+              "shared_frames": 193,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "shared_frames": 200,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "shared_frames": 188,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "shared_frames": 157,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "shared_frames": 197,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "shared_frames": 189,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "shared_frames": 180,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        },
+        "B": {
+          "shared_auroc": 0.5628518275931081,
+          "shared_ap": 0.4791497666431886,
+          "coverage": 0.9150610583446405,
+          "all_frame_decisions": {
+            "tp": 113,
+            "fp": 80,
+            "fn_known": 1124,
+            "tn": 2055,
+            "precision": 0.5854922279792746,
+            "recall_known": 0.09135004042037187,
+            "recall_all": 0.09011164274322168,
+            "normal_frame_false_positive_rate_known": 0.03747072599531616
+          },
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "shared_frames": 201,
+              "anomaly_frames": 141,
+              "auroc": 0.3483451536643026,
+              "average_precision": 0.6028804953646596
+            },
+            {
+              "sequence": "02",
+              "shared_frames": 233,
+              "anomaly_frames": 127,
+              "auroc": 0.5026741940276334,
+              "average_precision": 0.5312793092296282
+            },
+            {
+              "sequence": "03",
+              "shared_frames": 340,
+              "anomaly_frames": 195,
+              "auroc": 0.3764456233421751,
+              "average_precision": 0.4748891689602014
+            },
+            {
+              "sequence": "04",
+              "shared_frames": 150,
+              "anomaly_frames": 90,
+              "auroc": 0.4275925925925926,
+              "average_precision": 0.5437744663054341
+            },
+            {
+              "sequence": "05",
+              "shared_frames": 252,
+              "anomaly_frames": 92,
+              "auroc": 0.37418478260869564,
+              "average_precision": 0.2988004452384844
+            },
+            {
+              "sequence": "06",
+              "shared_frames": 182,
+              "anomaly_frames": 182,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "shared_frames": 192,
+              "anomaly_frames": 171,
+              "auroc": 0.4856585909217488,
+              "average_precision": 0.906203289758598
+            },
+            {
+              "sequence": "08",
+              "shared_frames": 188,
+              "anomaly_frames": 184,
+              "auroc": 0.3451086956521739,
+              "average_precision": 0.9742614100177583
+            },
+            {
+              "sequence": "09",
+              "shared_frames": 193,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "shared_frames": 200,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "shared_frames": 188,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "shared_frames": 157,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "shared_frames": 197,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "shared_frames": 189,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "shared_frames": 180,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        },
+        "C": {
+          "shared_auroc": 0.46227825992031,
+          "shared_ap": 0.34066089895785145,
+          "coverage": 0.8255088195386703,
+          "all_frame_decisions": {
+            "tp": 10,
+            "fp": 151,
+            "fn_known": 1172,
+            "tn": 1709,
+            "precision": 0.062111801242236024,
+            "recall_known": 0.008460236886632826,
+            "recall_all": 0.007974481658692184,
+            "normal_frame_false_positive_rate_known": 0.08118279569892473
+          },
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "shared_frames": 201,
+              "anomaly_frames": 141,
+              "auroc": 0.49645390070921985,
+              "average_precision": 0.6882515575773148
+            },
+            {
+              "sequence": "02",
+              "shared_frames": 233,
+              "anomaly_frames": 127,
+              "auroc": 0.5996137275293418,
+              "average_precision": 0.5410440042030085
+            },
+            {
+              "sequence": "03",
+              "shared_frames": 340,
+              "anomaly_frames": 195,
+              "auroc": 0.7728028293545535,
+              "average_precision": 0.7052358000608201
+            },
+            {
+              "sequence": "04",
+              "shared_frames": 150,
+              "anomaly_frames": 90,
+              "auroc": 0.27666666666666667,
+              "average_precision": 0.46096626879583996
+            },
+            {
+              "sequence": "05",
+              "shared_frames": 252,
+              "anomaly_frames": 92,
+              "auroc": 0.9192255434782609,
+              "average_precision": 0.752527122361584
+            },
+            {
+              "sequence": "06",
+              "shared_frames": 182,
+              "anomaly_frames": 182,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "shared_frames": 192,
+              "anomaly_frames": 171,
+              "auroc": 0.15121136173767752,
+              "average_precision": 0.8084875291094548
+            },
+            {
+              "sequence": "08",
+              "shared_frames": 188,
+              "anomaly_frames": 184,
+              "auroc": 0.008152173913043478,
+              "average_precision": 0.9209984178057529
+            },
+            {
+              "sequence": "09",
+              "shared_frames": 193,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "shared_frames": 200,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "shared_frames": 188,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "shared_frames": 157,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "shared_frames": 197,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "shared_frames": 189,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "shared_frames": 180,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        },
+        "D": {
+          "shared_auroc": 0.49351927660426104,
+          "shared_ap": 0.36700916848362475,
+          "coverage": 0.9150610583446405,
+          "all_frame_decisions": {
+            "tp": 29,
+            "fp": 157,
+            "fn_known": 1208,
+            "tn": 1978,
+            "precision": 0.15591397849462366,
+            "recall_known": 0.023443815683104285,
+            "recall_all": 0.023125996810207338,
+            "normal_frame_false_positive_rate_known": 0.07353629976580796
+          },
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "shared_frames": 201,
+              "anomaly_frames": 141,
+              "auroc": 0.2776595744680851,
+              "average_precision": 0.6147491847371157
+            },
+            {
+              "sequence": "02",
+              "shared_frames": 233,
+              "anomaly_frames": 127,
+              "auroc": 0.43024810577923045,
+              "average_precision": 0.4688964712474269
+            },
+            {
+              "sequence": "03",
+              "shared_frames": 340,
+              "anomaly_frames": 195,
+              "auroc": 0.35957559681697615,
+              "average_precision": 0.466121508642543
+            },
+            {
+              "sequence": "04",
+              "shared_frames": 150,
+              "anomaly_frames": 90,
+              "auroc": 0.3540740740740741,
+              "average_precision": 0.49852048492067874
+            },
+            {
+              "sequence": "05",
+              "shared_frames": 252,
+              "anomaly_frames": 92,
+              "auroc": 0.6672554347826087,
+              "average_precision": 0.4350283496984624
+            },
+            {
+              "sequence": "06",
+              "shared_frames": 182,
+              "anomaly_frames": 182,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "shared_frames": 192,
+              "anomaly_frames": 171,
+              "auroc": 0.4834307992202729,
+              "average_precision": 0.9075562373599445
+            },
+            {
+              "sequence": "08",
+              "shared_frames": 188,
+              "anomaly_frames": 184,
+              "auroc": 0.12092391304347826,
+              "average_precision": 0.9314248943153988
+            },
+            {
+              "sequence": "09",
+              "shared_frames": 193,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "shared_frames": 200,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "shared_frames": 188,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "shared_frames": 157,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "shared_frames": 197,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "shared_frames": 189,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "shared_frames": 180,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        }
+      }
+    },
+    "nearest_normal": {
+      "seconds": 5.6833765000000085,
+      "models": {
+        "A": {
+          "shared_auroc": 0.6002144624565617,
+          "shared_ap": 0.4192639070232824,
+          "coverage": 1,
+          "all_frame_decisions": {
+            "tp": 0,
+            "fp": 26,
+            "fn_known": 1254,
+            "tn": 2405,
+            "precision": 0,
+            "recall_known": 0,
+            "recall_all": 0,
+            "normal_frame_false_positive_rate_known": 0.0106951871657754
+          },
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "shared_frames": 201,
+              "anomaly_frames": 141,
+              "auroc": 0.4884160756501182,
+              "average_precision": 0.7081187241684683
+            },
+            {
+              "sequence": "02",
+              "shared_frames": 233,
+              "anomaly_frames": 127,
+              "auroc": 0.49130886941019164,
+              "average_precision": 0.5492476916054272
+            },
+            {
+              "sequence": "03",
+              "shared_frames": 340,
+              "anomaly_frames": 195,
+              "auroc": 0.4379487179487179,
+              "average_precision": 0.5025202447802841
+            },
+            {
+              "sequence": "04",
+              "shared_frames": 150,
+              "anomaly_frames": 90,
+              "auroc": 0.40944444444444444,
+              "average_precision": 0.5805043817330102
+            },
+            {
+              "sequence": "05",
+              "shared_frames": 252,
+              "anomaly_frames": 92,
+              "auroc": 0.5546195652173913,
+              "average_precision": 0.3755183478412723
+            },
+            {
+              "sequence": "06",
+              "shared_frames": 182,
+              "anomaly_frames": 182,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "shared_frames": 192,
+              "anomaly_frames": 171,
+              "auroc": 0.5410749094959622,
+              "average_precision": 0.9146435162706541
+            },
+            {
+              "sequence": "08",
+              "shared_frames": 188,
+              "anomaly_frames": 184,
+              "auroc": 0.45516304347826086,
+              "average_precision": 0.970405661403552
+            },
+            {
+              "sequence": "09",
+              "shared_frames": 193,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "shared_frames": 200,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "shared_frames": 188,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "shared_frames": 157,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "shared_frames": 197,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "shared_frames": 189,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "shared_frames": 180,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        },
+        "B": {
+          "shared_auroc": 0.630860760875498,
+          "shared_ap": 0.5195053475701011,
+          "coverage": 0.9150610583446405,
+          "all_frame_decisions": {
+            "tp": 165,
+            "fp": 89,
+            "fn_known": 1072,
+            "tn": 2046,
+            "precision": 0.6496062992125984,
+            "recall_known": 0.1333872271624899,
+            "recall_all": 0.13157894736842105,
+            "normal_frame_false_positive_rate_known": 0.041686182669789226
+          },
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "shared_frames": 201,
+              "anomaly_frames": 141,
+              "auroc": 0.458274231678487,
+              "average_precision": 0.6976136845266246
+            },
+            {
+              "sequence": "02",
+              "shared_frames": 233,
+              "anomaly_frames": 127,
+              "auroc": 0.49740008913980094,
+              "average_precision": 0.5135442756606098
+            },
+            {
+              "sequence": "03",
+              "shared_frames": 340,
+              "anomaly_frames": 195,
+              "auroc": 0.6029354553492484,
+              "average_precision": 0.6200710216499575
+            },
+            {
+              "sequence": "04",
+              "shared_frames": 150,
+              "anomaly_frames": 90,
+              "auroc": 0.4898148148148148,
+              "average_precision": 0.5772547893435077
+            },
+            {
+              "sequence": "05",
+              "shared_frames": 252,
+              "anomaly_frames": 92,
+              "auroc": 0.44972826086956524,
+              "average_precision": 0.34589486892000376
+            },
+            {
+              "sequence": "06",
+              "shared_frames": 182,
+              "anomaly_frames": 182,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "shared_frames": 192,
+              "anomaly_frames": 171,
+              "auroc": 0.747145641882484,
+              "average_precision": 0.9623620500813235
+            },
+            {
+              "sequence": "08",
+              "shared_frames": 188,
+              "anomaly_frames": 184,
+              "auroc": 0.44565217391304346,
+              "average_precision": 0.9805595482929541
+            },
+            {
+              "sequence": "09",
+              "shared_frames": 193,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "shared_frames": 200,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "shared_frames": 188,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "shared_frames": 157,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "shared_frames": 197,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "shared_frames": 189,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "shared_frames": 180,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        },
+        "C": {
+          "shared_auroc": 0.5991207721558139,
+          "shared_ap": 0.441948604187973,
+          "coverage": 0.8255088195386703,
+          "all_frame_decisions": {
+            "tp": 10,
+            "fp": 144,
+            "fn_known": 1172,
+            "tn": 1716,
+            "precision": 0.06493506493506493,
+            "recall_known": 0.008460236886632826,
+            "recall_all": 0.007974481658692184,
+            "normal_frame_false_positive_rate_known": 0.07741935483870968
+          },
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "shared_frames": 201,
+              "anomaly_frames": 141,
+              "auroc": 0.7273049645390071,
+              "average_precision": 0.8155194400339668
+            },
+            {
+              "sequence": "02",
+              "shared_frames": 233,
+              "anomaly_frames": 127,
+              "auroc": 0.7214381221215272,
+              "average_precision": 0.6177516243246922
+            },
+            {
+              "sequence": "03",
+              "shared_frames": 340,
+              "anomaly_frames": 195,
+              "auroc": 0.9698673740053051,
+              "average_precision": 0.9422207692264092
+            },
+            {
+              "sequence": "04",
+              "shared_frames": 150,
+              "anomaly_frames": 90,
+              "auroc": 0.8381481481481482,
+              "average_precision": 0.799095648100719
+            },
+            {
+              "sequence": "05",
+              "shared_frames": 252,
+              "anomaly_frames": 92,
+              "auroc": 0.9603940217391305,
+              "average_precision": 0.8477026587837851
+            },
+            {
+              "sequence": "06",
+              "shared_frames": 182,
+              "anomaly_frames": 182,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "shared_frames": 192,
+              "anomaly_frames": 171,
+              "auroc": 0.1361737677527151,
+              "average_precision": 0.7955465044355404
+            },
+            {
+              "sequence": "08",
+              "shared_frames": 188,
+              "anomaly_frames": 184,
+              "auroc": 0.008152173913043478,
+              "average_precision": 0.9209984178057529
+            },
+            {
+              "sequence": "09",
+              "shared_frames": 193,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "shared_frames": 200,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "shared_frames": 188,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "shared_frames": 157,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "shared_frames": 197,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "shared_frames": 189,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "shared_frames": 180,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        },
+        "D": {
+          "shared_auroc": 0.6316958681294689,
+          "shared_ap": 0.45338533070509573,
+          "coverage": 0.9150610583446405,
+          "all_frame_decisions": {
+            "tp": 63,
+            "fp": 174,
+            "fn_known": 1174,
+            "tn": 1961,
+            "precision": 0.26582278481012656,
+            "recall_known": 0.05092966855295069,
+            "recall_all": 0.050239234449760764,
+            "normal_frame_false_positive_rate_known": 0.08149882903981265
+          },
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "shared_frames": 201,
+              "anomaly_frames": 141,
+              "auroc": 0.543144208037825,
+              "average_precision": 0.749525748274476
+            },
+            {
+              "sequence": "02",
+              "shared_frames": 233,
+              "anomaly_frames": 127,
+              "auroc": 0.4481503491308869,
+              "average_precision": 0.47328124065726485
+            },
+            {
+              "sequence": "03",
+              "shared_frames": 340,
+              "anomaly_frames": 195,
+              "auroc": 0.8453404067197171,
+              "average_precision": 0.870146735624387
+            },
+            {
+              "sequence": "04",
+              "shared_frames": 150,
+              "anomaly_frames": 90,
+              "auroc": 0.5292592592592592,
+              "average_precision": 0.5865277057104642
+            },
+            {
+              "sequence": "05",
+              "shared_frames": 252,
+              "anomaly_frames": 92,
+              "auroc": 0.8987771739130435,
+              "average_precision": 0.7063036439002501
+            },
+            {
+              "sequence": "06",
+              "shared_frames": 182,
+              "anomaly_frames": 182,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "shared_frames": 192,
+              "anomaly_frames": 171,
+              "auroc": 0.7243107769423559,
+              "average_precision": 0.9591041518484502
+            },
+            {
+              "sequence": "08",
+              "shared_frames": 188,
+              "anomaly_frames": 184,
+              "auroc": 0.35597826086956524,
+              "average_precision": 0.9767786234458771
+            },
+            {
+              "sequence": "09",
+              "shared_frames": 193,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "shared_frames": 200,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "shared_frames": 188,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "shared_frames": 157,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "shared_frames": 197,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "shared_frames": 189,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "shared_frames": 180,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        }
+      }
+    }
+  },
+  "extraction": {
+    "seconds": 6425.934537153001,
+    "peak_gpu_gib": 2.4095025062561035,
+    "normal_detection_coverage": 0.8920338114754098,
+    "normal_motion_coverage": 0.8030225409836066
+  }
+}
