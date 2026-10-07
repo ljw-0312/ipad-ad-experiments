@@ -303,3 +303,12 @@ IPAD pilot은 중심 프레임 예측에 미래 프레임을 사용하고 테스
 - 직접 실행한 초기 baseline, public-code smoke/pilot, meeting experiment 및 cached diagnostic의 결과 JSON.
 
 데이터셋 영상별 이상 종류는 이번 보고서에서 새로 확정하거나 라벨링하지 않았다. 추후 영상 확인에 기반한 별도 분석 결과를 추가할 예정이다.
+
+## DINOv2 후속 비교 실행
+
+기존 검출 사각형과 추적을 재사용하고 외관 인코더만 frozen DINOv2-Small로 바꾸는 후속 실험을 준비했다. **실제 성능 결과는 아직 없다.**
+
+- [Colab 실행 안내](docs/dinov2_comparison.md)
+- [독립 실행 스크립트](experiments/IPAD_DINOv2_Comparison.py)
+
+원래 CLIP 특징과 새 DINOv2 특징을 동일 정상 영상 분할 및 동일 평가 프레임에서 PCA / 정상 사례 거리 방식으로 비교한다. 동작 특징은 변경하지 않는다.
