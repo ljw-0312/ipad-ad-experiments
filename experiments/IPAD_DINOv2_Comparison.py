@@ -359,6 +359,7 @@ import copy
 import gc
 import importlib.util
 import math
+import os
 import subprocess
 import sys
 import time
@@ -366,6 +367,14 @@ from PIL import Image
 
 SOURCE_FOLDER = 'R01_20261007_102640_886381_UTC'
 DINO_MODEL = 'facebook/dinov2-small'
+
+
+def choose_device(requested, cuda_available):
+    if requested not in ['auto', 'cpu', 'cuda']:
+        raise ValueError('IPAD_DEVICE must be auto, cpu or cuda; TPU needs a separate runner.')
+    if requested == 'cuda' and not cuda_available:
+        raise RuntimeError('CUDA requested but no NVIDIA GPU is available.')
+    return 'cuda' if requested == 'cuda' or (requested == 'auto' and cuda_available) else 'cpu'
 
 
 def restore_frames(project, settings):
@@ -498,6 +507,7 @@ def extract_dino(record, root, cache_dir, signature, encode, batch_frames=8):
     full, obj = feature_arrays(record, globals_, object_features, dim)
     metadata = dict(signature=signature, source_id=record['id'], sequence=record['sequence'], split=record['split'],
                     frames=len(paths), seconds=seconds, frames_per_second=len(paths)/seconds, cache_hit=False,
+                    execution_device=getattr(encode, 'device', 'test'),
                     timing_scope='local JPG reads, crop, processor, DINO inference and CPU feature transfer; excludes source hashing and cache write')
     temporary = target.with_suffix('.tmp')
     with temporary.open('wb') as f:
@@ -510,8 +520,10 @@ def extract_dino(record, root, cache_dir, signature, encode, batch_frames=8):
 class DinoEncoder:
     def __init__(self):
         import torch
-        if not torch.cuda.is_available():
-            raise RuntimeError('Colab: select Runtime > Change runtime type > T4 GPU, then run this cell again.')
+        self.device = choose_device(os.environ.get('IPAD_DEVICE', 'auto').lower(), torch.cuda.is_available())
+        if self.device == 'cpu':
+            torch.set_num_threads(min(4, os.cpu_count() or 1))
+        print(f'DINO inference device: {self.device}', flush=True)
         from transformers import AutoConfig, AutoImageProcessor, Dinov2Model
         self.torch = torch
         config = AutoConfig.from_pretrained(DINO_MODEL)
@@ -519,14 +531,14 @@ class DinoEncoder:
         if not revision:
             raise RuntimeError('Could not resolve DINO model revision')
         self.processor = AutoImageProcessor.from_pretrained(DINO_MODEL, revision=revision, use_fast=False)
-        self.model = Dinov2Model.from_pretrained(DINO_MODEL, revision=revision, config=config).to('cuda').eval()
+        self.model = Dinov2Model.from_pretrained(DINO_MODEL, revision=revision, config=config).to(self.device).eval()
         for p in self.model.parameters():
             p.requires_grad_(False)
         self.signature = dict(model=DINO_MODEL, revision=revision, feature_dim=config.hidden_size,
             feature='last_hidden_state CLS token; L2 normalized', precision='float32',
             preprocessing='shortest side 224, center crop 224, bicubic; DINO ImageNet normalization',
             processor_revision=revision, extraction_version=1, crop_margin=.05)
-        self.batch_images = 32
+        self.batch_images = 32 if self.device == 'cuda' else 8
 
     def __call__(self, images):
         torch = self.torch
@@ -538,14 +550,14 @@ class DinoEncoder:
                 with torch.inference_mode():
                     inputs = self.processor(images=images[start:start+count], return_tensors='pt',
                         size={'shortest_edge': 224}, crop_size={'height': 224, 'width': 224},
-                        do_resize=True, do_center_crop=True).to('cuda')
+                        do_resize=True, do_center_crop=True).to(self.device)
                     output = self.model(**inputs)
                     z = torch.nn.functional.normalize(output.last_hidden_state[:, 0].float(), dim=-1).cpu().numpy()
                 chunks.append(z)
                 del inputs, output, z
                 start += count
             except torch.cuda.OutOfMemoryError:
-                if count == 1:
+                if self.device != 'cuda' or count == 1:
                     raise
                 # Drop partially allocated tensors before a smaller retry.
                 inputs = output = None
@@ -558,7 +570,8 @@ class DinoEncoder:
     def close(self):
         self.model = None
         gc.collect()
-        self.torch.cuda.empty_cache()
+        if self.device == 'cuda':
+            self.torch.cuda.empty_cache()
 
 
 def ensure_dependencies():
@@ -633,14 +646,18 @@ def run_dinov2_comparison():
             raise ValueError('DINO smoke inference failed')
         for im in smoke_images:
             im.close()
-        torch.cuda.reset_peak_memory_stats()
-        report.update(model_signature=encoder.signature, gpu=torch.cuda.get_device_name(),
+        if encoder.device == 'cuda':
+            torch.cuda.reset_peak_memory_stats()
+        report.update(model_signature=encoder.signature, execution_device=encoder.device,
+            gpu=torch.cuda.get_device_name() if encoder.device == 'cuda' else None,
+            cpu_threads=torch.get_num_threads(),
             preprocessing_note='DINO resize/crop geometry matches prior CLIP 224 setup; normalization is model-specific. Native DINO shortest-side 256 was overridden to 224.',
             partitions=dict(fit=settings['fit_sequences'],scale=settings['scale_calibration_sequences'],threshold=settings['threshold_calibration_sequences']),
             notes=['Frozen DINOv2-Small CLS features vs frozen CLIP ViT-B/32.',
                 'Original boxes, tracks, crop margin, frame order and motion descriptors are reused.',
                 'PCA and nearest-normal scorers are each held fixed across encoders.',
                 'All thresholds use disjoint normal data, no test labels for fitting.',
+                'CPU/CUDA use the same float32 extraction recipe and caches; minor numerical device differences are possible.',
                 'Single-scene exploratory follow-up; not an independent confirmation or paper reproduction.',
                 'C is unchanged motion control; D is exploratory fusion. Primary encoder comparison is A and B.'])
         write(run/'settings.json', report)
@@ -656,7 +673,7 @@ def run_dinov2_comparison():
             if i == 1 and not meta['cache_hit']:
                 remaining = sum(len(x['frames']) for x in records[1:])
                 print(f'Estimated remaining extraction: {remaining/meta["frames_per_second"]/60:.1f} minutes; excludes I/O variation and scoring.', flush=True)
-        report['peak_gpu_gib'] = torch.cuda.max_memory_allocated()/1024**3
+        report['peak_gpu_gib'] = torch.cuda.max_memory_allocated()/1024**3 if encoder.device == 'cuda' else None
         report['extraction_timing'] = timing
         report['effective_batch_images'] = encoder.batch_images
         encoder.close()
