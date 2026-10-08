@@ -377,6 +377,13 @@ def choose_device(requested, cuda_available):
     return 'cuda' if requested == 'cuda' or (requested == 'auto' and cuda_available) else 'cpu'
 
 
+def revision_from_info(info):
+    revision = getattr(info, 'sha', None)
+    if not isinstance(revision, str) or len(revision) != 40 or any(c not in '0123456789abcdefABCDEF' for c in revision):
+        raise RuntimeError('Hugging Face did not return a valid model commit. Check the connection to huggingface.co.')
+    return revision
+
+
 def restore_frames(project, settings):
     """Restore only the source R01 JPGs and labels; never run detection."""
     root = Path('/content/meeting_ad_data') / settings['data_manifest'][:16] / 'R01'
@@ -525,11 +532,13 @@ class DinoEncoder:
             torch.set_num_threads(min(4, os.cpu_count() or 1))
         print(f'DINO inference device: {self.device}', flush=True)
         from transformers import AutoConfig, AutoImageProcessor, Dinov2Model
+        from huggingface_hub import HfApi
         self.torch = torch
-        config = AutoConfig.from_pretrained(DINO_MODEL)
-        revision = getattr(config, '_commit_hash', None)
-        if not revision:
-            raise RuntimeError('Could not resolve DINO model revision')
+        # Private AutoConfig._commit_hash is absent in some transformers versions.
+        # Resolve through the public Hub API and pin ALL model assets to that commit.
+        revision = revision_from_info(HfApi().model_info(DINO_MODEL, revision='main'))
+        print(f'DINO model revision: {revision}', flush=True)
+        config = AutoConfig.from_pretrained(DINO_MODEL, revision=revision)
         self.processor = AutoImageProcessor.from_pretrained(DINO_MODEL, revision=revision, use_fast=False)
         self.model = Dinov2Model.from_pretrained(DINO_MODEL, revision=revision, config=config).to(self.device).eval()
         for p in self.model.parameters():
