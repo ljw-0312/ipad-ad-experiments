@@ -1,0 +1,2198 @@
+{
+  "status": "passed",
+  "device": "cpu",
+  "window": 16,
+  "endpoint_step": 32,
+  "model_signature": {
+    "model": "facebook/vjepa2-vitl-fpc64-256",
+    "revision": "b3c1679b7c34d3255ef3547f27c7b226aefab26f",
+    "transformers": "4.57.1",
+    "window": 16,
+    "endpoint_step": 32,
+    "size": 256,
+    "feature_dim": 1024,
+    "input": "full-frame fixed center crop",
+    "pooling": "mean over final encoder spatiotemporal tokens, L2 normalize",
+    "precision": "float32",
+    "preprocessing": "shortest side 256, center crop 256, bicubic, ImageNet normalize",
+    "version": 1
+  },
+  "smoke": {
+    "seconds": 35.939335037999626,
+    "feature_dim": 1024,
+    "total_clips": 349,
+    "rough_hours": 3.4841188689616303
+  },
+  "normal_temporal_probe": {
+    "reversed_cosine_distance": 0.012684166431427002,
+    "repeated_last_frame_cosine_distance": 0.12760710716247559,
+    "note": "Normal-only sensitivity check; not an anomaly detection result."
+  },
+  "notes": [
+    "Official V-JEPA 2 ViT-L/16 pretrained checkpoint, frozen CPU float32 encoder; no predictor anomaly score.",
+    "Pretrained for 64 frames at 256; this CPU pilot uses 16 actual past frames at 256 by default.",
+    "Full-frame fixed spatial crop, not object-centric V-JEPA. No detector rerun.",
+    "G: cached DINO single frame; T: DINO mean + signed endpoint change + mean absolute difference.",
+    "C: existing 10-frame object coordinate features; V: mean-pooled V-JEPA video feature; GV: max of normal-scaled G and V.",
+    "Same sampled endpoints for comparisons. Common subset additionally requires observed C.",
+    "Sampling is fixed before test scoring; endpoint labels, no interpolation or future frames.",
+    "Same disjoint normal video groups; fitted observations restricted to sampled endpoints.",
+    "Video features mix appearance and time. Better V scores would not by themselves isolate motion contribution.",
+    "Different model capacities and input resolution. Exploratory R01 follow-up, not a paper reproduction or novelty claim."
+  ],
+  "timing": [
+    {
+      "sequence": "01",
+      "split": "training",
+      "clips": 6,
+      "resumed_clips": 0,
+      "seconds": 217.36534936099815,
+      "new_seconds": 217.36534936099815,
+      "clip_seconds": [
+        35.59281563500008,
+        37.693528820998836,
+        35.352828557000976,
+        35.61865753500024,
+        37.70353316599903,
+        35.40398564699899
+      ]
+    },
+    {
+      "sequence": "02",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 262.7862011470006,
+      "new_seconds": 262.7862011470006,
+      "clip_seconds": [
+        35.49012177900113,
+        37.42834208900058,
+        36.11920499600092,
+        35.3844812669995,
+        37.412857530998735,
+        36.0354044249998,
+        44.91578905999995
+      ]
+    },
+    {
+      "sequence": "03",
+      "split": "training",
+      "clips": 6,
+      "resumed_clips": 0,
+      "seconds": 217.56918710400168,
+      "new_seconds": 217.56918710400168,
+      "clip_seconds": [
+        35.69694572300068,
+        35.52333089400054,
+        37.59624062200055,
+        35.79410557900155,
+        35.85407056599979,
+        37.10449371999857
+      ]
+    },
+    {
+      "sequence": "04",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 254.74481300700063,
+      "new_seconds": 254.74481300700063,
+      "clip_seconds": [
+        36.150221849000445,
+        35.62668148699959,
+        37.39426985099999,
+        36.47824135500014,
+        35.475384195000515,
+        36.64942027899997,
+        36.97059399099999
+      ]
+    },
+    {
+      "sequence": "05",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 260.4530811320019,
+      "new_seconds": 260.4530811320019,
+      "clip_seconds": [
+        35.40232228400055,
+        36.664968607001356,
+        37.07379294200109,
+        42.751115467001,
+        37.54132895600014,
+        35.509855074998995,
+        35.509697800998765
+      ]
+    },
+    {
+      "sequence": "06",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 256.43446186000074,
+      "new_seconds": 256.43446186000074,
+      "clip_seconds": [
+        38.019361098000445,
+        35.62833660300021,
+        35.6179500950002,
+        38.021729861000495,
+        35.71468409999943,
+        35.58483080699989,
+        37.847569296000074
+      ]
+    },
+    {
+      "sequence": "07",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 253.80403868499525,
+      "new_seconds": 253.80403868499525,
+      "clip_seconds": [
+        35.613682031998906,
+        35.50345892899895,
+        37.61948196099911,
+        35.73272746999828,
+        35.76502992099995,
+        37.83958556700054,
+        35.73007280499951
+      ]
+    },
+    {
+      "sequence": "08",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 253.41846465199887,
+      "new_seconds": 253.41846465199887,
+      "clip_seconds": [
+        35.69902202099911,
+        37.86276685199846,
+        35.63187581499915,
+        35.48259929000051,
+        37.088207324000905,
+        36.055331748000754,
+        35.59866160199999
+      ]
+    },
+    {
+      "sequence": "09",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 254.64821197000128,
+      "new_seconds": 254.64821197000128,
+      "clip_seconds": [
+        37.16571941900111,
+        36.1773709270019,
+        35.58567514999959,
+        37.089448585000355,
+        36.4452800830004,
+        35.61032135999994,
+        36.57439644599799
+      ]
+    },
+    {
+      "sequence": "10",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 254.6707480010009,
+      "new_seconds": 254.6707480010009,
+      "clip_seconds": [
+        37.480997747999936,
+        35.354643754999415,
+        37.08418919500036,
+        36.25135428200156,
+        35.31264060900139,
+        35.57363344699843,
+        37.61328896499981
+      ]
+    },
+    {
+      "sequence": "11",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.6513139819981,
+      "new_seconds": 252.6513139819981,
+      "clip_seconds": [
+        35.288408559001255,
+        35.4837274599995,
+        37.4227702399985,
+        35.95116698900165,
+        35.4098057509982,
+        36.46446083000046,
+        36.63097415299853
+      ]
+    },
+    {
+      "sequence": "12",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 253.23626377500113,
+      "new_seconds": 253.23626377500113,
+      "clip_seconds": [
+        35.676985636997415,
+        36.1633732520022,
+        37.11996731199906,
+        35.530426089000684,
+        35.482546265000565,
+        37.79000617800193,
+        35.472959041999275
+      ]
+    },
+    {
+      "sequence": "13",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 253.80719491600757,
+      "new_seconds": 253.80719491600757,
+      "clip_seconds": [
+        35.46852202700029,
+        37.6294967649992,
+        35.85400674500124,
+        35.56769151000117,
+        37.826989968001726,
+        35.938998436002294,
+        35.52148946500165
+      ]
+    },
+    {
+      "sequence": "14",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 254.8967996370011,
+      "new_seconds": 254.8967996370011,
+      "clip_seconds": [
+        37.912804607,
+        35.67965227199966,
+        35.36094340800264,
+        37.23548982799912,
+        36.2743786760002,
+        35.3978705720001,
+        37.03566027399938
+      ]
+    },
+    {
+      "sequence": "15",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 254.23677775900796,
+      "new_seconds": 254.23677775900796,
+      "clip_seconds": [
+        36.29286784500073,
+        35.571742412001186,
+        36.442167548000725,
+        37.00256318200263,
+        35.60492638100186,
+        35.76022201399974,
+        37.562288377001096
+      ]
+    },
+    {
+      "sequence": "16",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 254.1176165340039,
+      "new_seconds": 254.1176165340039,
+      "clip_seconds": [
+        35.561202306998894,
+        35.483206725002674,
+        37.834639018001326,
+        35.45146616900092,
+        36.57361136200052,
+        37.6063081100001,
+        35.607182842999464
+      ]
+    },
+    {
+      "sequence": "17",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.6218712060072,
+      "new_seconds": 252.6218712060072,
+      "clip_seconds": [
+        35.361952929000836,
+        37.80176413300069,
+        35.30155915400246,
+        35.28300087400203,
+        37.814000173999375,
+        35.47571198199876,
+        35.583881960003055
+      ]
+    },
+    {
+      "sequence": "18",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 256.12545720300477,
+      "new_seconds": 256.12545720300477,
+      "clip_seconds": [
+        37.967597146001935,
+        35.62938840000061,
+        35.52705595900261,
+        37.9335210370009,
+        35.62339986000006,
+        35.66120941999907,
+        37.78328538099959
+      ]
+    },
+    {
+      "sequence": "19",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 253.4563916689949,
+      "new_seconds": 253.4563916689949,
+      "clip_seconds": [
+        35.567748409997876,
+        35.59914725899944,
+        37.697700519001955,
+        35.68977637599892,
+        35.52026267799738,
+        37.705560656999296,
+        35.67619577000005
+      ]
+    },
+    {
+      "sequence": "20",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.88748249500713,
+      "new_seconds": 252.88748249500713,
+      "clip_seconds": [
+        35.515274561003025,
+        36.562363369001105,
+        36.55000419300268,
+        35.304681554000126,
+        36.02930561299945,
+        37.50291131000267,
+        35.422941894998075
+      ]
+    },
+    {
+      "sequence": "21",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.69924779199937,
+      "new_seconds": 252.69924779199937,
+      "clip_seconds": [
+        35.379377463999845,
+        37.78804280600161,
+        35.339838657000655,
+        35.388244437999674,
+        37.435720056997525,
+        35.862008454001625,
+        35.50601591599843
+      ]
+    },
+    {
+      "sequence": "22",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 255.21020861600118,
+      "new_seconds": 255.21020861600118,
+      "clip_seconds": [
+        37.275346996000735,
+        36.555254577000596,
+        35.68988825799897,
+        36.5191772649996,
+        37.15693731800275,
+        35.30334649699944,
+        36.710257704999094
+      ]
+    },
+    {
+      "sequence": "23",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 251.48648527399928,
+      "new_seconds": 251.48648527399928,
+      "clip_seconds": [
+        36.18328096099867,
+        35.42014780499812,
+        37.13349503000063,
+        35.46376761600186,
+        35.087762586998,
+        37.16007046100276,
+        35.037960813999234
+      ]
+    },
+    {
+      "sequence": "24",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 250.05465661900234,
+      "new_seconds": 250.05465661900234,
+      "clip_seconds": [
+        35.138553119999415,
+        37.15224640000088,
+        34.98280243300178,
+        35.12487685800079,
+        37.38037556299969,
+        35.13479762299903,
+        35.141004622000764
+      ]
+    },
+    {
+      "sequence": "25",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.50410593799825,
+      "new_seconds": 252.50410593799825,
+      "clip_seconds": [
+        37.423695125999075,
+        35.062801096999465,
+        35.434913511999184,
+        37.16626120799992,
+        34.95767177000016,
+        35.311720911999146,
+        37.14704231300129
+      ]
+    },
+    {
+      "sequence": "26",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 253.07120360900808,
+      "new_seconds": 253.07120360900808,
+      "clip_seconds": [
+        34.98141443300119,
+        35.39749197200217,
+        36.917585474999214,
+        38.11142098300115,
+        36.65361292400121,
+        35.881624130001,
+        35.12805369200214
+      ]
+    },
+    {
+      "sequence": "27",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.0081532309996,
+      "new_seconds": 252.0081532309996,
+      "clip_seconds": [
+        36.67167618500025,
+        35.61016925900185,
+        35.09994367499894,
+        36.633739021999645,
+        35.8803924749991,
+        35.13955966600042,
+        36.97267294899939
+      ]
+    },
+    {
+      "sequence": "28",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 250.77028179400077,
+      "new_seconds": 250.77028179400077,
+      "clip_seconds": [
+        35.84800395599814,
+        35.1810572760005,
+        37.380534721000004,
+        35.096265686999686,
+        35.00222698500147,
+        37.195987254999636,
+        35.06620591400133
+      ]
+    },
+    {
+      "sequence": "29",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.5363253050018,
+      "new_seconds": 252.5363253050018,
+      "clip_seconds": [
+        35.417252138999174,
+        37.1259208219999,
+        35.27972681900064,
+        36.0585535670034,
+        36.564019900997664,
+        35.21438562500043,
+        36.8764664320006
+      ]
+    },
+    {
+      "sequence": "30",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 251.695761829993,
+      "new_seconds": 251.695761829993,
+      "clip_seconds": [
+        35.70387498999844,
+        35.336016240999015,
+        37.58160208699701,
+        35.233627620000334,
+        35.19547616499767,
+        37.30585287199938,
+        35.33931185500114
+      ]
+    },
+    {
+      "sequence": "31",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 251.92916055499518,
+      "new_seconds": 251.92916055499518,
+      "clip_seconds": [
+        35.39244752299783,
+        37.21733541700087,
+        35.08404328400138,
+        35.45675260899952,
+        37.008321208999405,
+        35.25843328499832,
+        36.511827227997856
+      ]
+    },
+    {
+      "sequence": "32",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 251.45363461199668,
+      "new_seconds": 251.45363461199668,
+      "clip_seconds": [
+        35.83157295199999,
+        35.33077996099746,
+        37.2907299819999,
+        35.24374544899911,
+        35.39445619500111,
+        37.23740463899958,
+        35.12494543399953
+      ]
+    },
+    {
+      "sequence": "33",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 250.56423073899714,
+      "new_seconds": 250.56423073899714,
+      "clip_seconds": [
+        35.359351776998665,
+        36.815232151999226,
+        35.103036283999245,
+        35.31342501199833,
+        37.03301110300163,
+        34.95450859199991,
+        35.98566581900013
+      ]
+    },
+    {
+      "sequence": "34",
+      "split": "training",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.07484463500077,
+      "new_seconds": 252.07484463500077,
+      "clip_seconds": [
+        36.508491734002746,
+        34.981441867003014,
+        35.74666662399977,
+        36.5628180019994,
+        35.27923191299851,
+        36.84032636600023,
+        36.1558681289971
+      ]
+    },
+    {
+      "sequence": "01",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 251.63097111300158,
+      "new_seconds": 251.63097111300158,
+      "clip_seconds": [
+        35.47673106000002,
+        37.397930082999665,
+        35.19470530999752,
+        35.3480544060003,
+        37.28601613700084,
+        35.30469683500269,
+        35.622837282000546
+      ]
+    },
+    {
+      "sequence": "02",
+      "split": "testing",
+      "clips": 8,
+      "resumed_clips": 0,
+      "seconds": 288.7903047359978,
+      "new_seconds": 288.7903047359978,
+      "clip_seconds": [
+        37.271393248000095,
+        35.21854390199951,
+        36.075629472998116,
+        36.54210816499835,
+        35.35754039099993,
+        36.59031245400183,
+        36.6460380339995,
+        35.08873906900044
+      ]
+    },
+    {
+      "sequence": "03",
+      "split": "testing",
+      "clips": 13,
+      "resumed_clips": 0,
+      "seconds": 468.85713974699684,
+      "new_seconds": 468.85713974699684,
+      "clip_seconds": [
+        37.56392285599941,
+        35.27535148699826,
+        35.14609766899957,
+        37.258528114998626,
+        35.21720698900026,
+        35.207571130998986,
+        37.40390613400086,
+        35.231444583001576,
+        35.49408167799993,
+        37.25343789099861,
+        35.22479101600038,
+        35.75592539799982,
+        36.82487480000054
+      ]
+    },
+    {
+      "sequence": "04",
+      "split": "testing",
+      "clips": 6,
+      "resumed_clips": 0,
+      "seconds": 216.7396019849948,
+      "new_seconds": 216.7396019849948,
+      "clip_seconds": [
+        35.37800378599786,
+        36.001385660998494,
+        36.867723064999154,
+        35.30433314000038,
+        36.8856878589977,
+        36.302468474001216
+      ]
+    },
+    {
+      "sequence": "05",
+      "split": "testing",
+      "clips": 9,
+      "resumed_clips": 0,
+      "seconds": 324.06883938500687,
+      "new_seconds": 324.06883938500687,
+      "clip_seconds": [
+        35.421636254002806,
+        37.46308970799873,
+        35.57375276700259,
+        35.55432346299858,
+        37.12585436600057,
+        35.22855632699793,
+        36.13402019800196,
+        36.337193278002815,
+        35.23041302400088
+      ]
+    },
+    {
+      "sequence": "06",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 253.13803215999724,
+      "new_seconds": 253.13803215999724,
+      "clip_seconds": [
+        36.263527573999454,
+        36.05564245599817,
+        35.24488985299831,
+        37.00127498100119,
+        35.82272199900035,
+        35.22780866800167,
+        37.52216662899809
+      ]
+    },
+    {
+      "sequence": "07",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 250.65707010700135,
+      "new_seconds": 250.65707010700135,
+      "clip_seconds": [
+        35.32746929899804,
+        35.63511290400129,
+        36.80465869999898,
+        35.31556832299975,
+        36.21501986899966,
+        36.240749887001584,
+        35.11849112500204
+      ]
+    },
+    {
+      "sequence": "08",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 254.07727573800003,
+      "new_seconds": 254.07727573800003,
+      "clip_seconds": [
+        36.824430716998904,
+        36.1225380950018,
+        35.40458087799925,
+        37.42932536099761,
+        35.3945640689999,
+        35.43424051600232,
+        37.46759610200024
+      ]
+    },
+    {
+      "sequence": "09",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 251.89000409100117,
+      "new_seconds": 251.89000409100117,
+      "clip_seconds": [
+        35.30483882599947,
+        36.28589179899791,
+        36.58379445200262,
+        35.640939282002364,
+        37.06550582500131,
+        35.74857368700032,
+        35.260460219997185
+      ]
+    },
+    {
+      "sequence": "10",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.90735311900062,
+      "new_seconds": 252.90735311900062,
+      "clip_seconds": [
+        37.45001851100096,
+        35.27119679899988,
+        35.278843332998804,
+        37.25890830199933,
+        35.197284737998416,
+        35.210796406001464,
+        37.240305030001764
+      ]
+    },
+    {
+      "sequence": "11",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 250.94716206099838,
+      "new_seconds": 250.94716206099838,
+      "clip_seconds": [
+        35.17162217099758,
+        36.042978307999874,
+        36.54435037999792,
+        35.242401098999835,
+        36.689274183001544,
+        36.128805136002484,
+        35.12773078399914
+      ]
+    },
+    {
+      "sequence": "12",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 252.8024151339996,
+      "new_seconds": 252.8024151339996,
+      "clip_seconds": [
+        37.19342643100026,
+        35.34693976999915,
+        35.21215959999972,
+        37.35358336900026,
+        35.22154116499951,
+        35.37634806999995,
+        37.098416729000746
+      ]
+    },
+    {
+      "sequence": "13",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 251.48736991100304,
+      "new_seconds": 251.48736991100304,
+      "clip_seconds": [
+        35.28624770500028,
+        37.17089262099762,
+        35.63821960000132,
+        35.223613048001425,
+        37.46623104600076,
+        35.31421439699989,
+        35.387951494001754
+      ]
+    },
+    {
+      "sequence": "14",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 253.44846877799864,
+      "new_seconds": 253.44846877799864,
+      "clip_seconds": [
+        37.480842969998776,
+        35.556396320000204,
+        36.55091496100067,
+        36.235837935000745,
+        35.31826610099961,
+        37.27161296999839,
+        35.03459752100025
+      ]
+    },
+    {
+      "sequence": "15",
+      "split": "testing",
+      "clips": 7,
+      "resumed_clips": 0,
+      "seconds": 251.58580284499476,
+      "new_seconds": 251.58580284499476,
+      "clip_seconds": [
+        35.203064315999654,
+        37.258056425001996,
+        35.13086229999681,
+        36.25778125099896,
+        35.998073228001886,
+        35.15165427699685,
+        36.586311047998606
+      ]
+    }
+  ],
+  "variants": {
+    "pca_residual": {
+      "full_test_frames": 3685,
+      "sampled_endpoints": 113,
+      "shared_endpoints": 96,
+      "shared_coverage_of_sampled_endpoints": 0.8495575221238938,
+      "sampled_frame_fraction": 0.030664857530529173,
+      "shared_anomaly_endpoints": 38,
+      "models": {
+        "G": {
+          "shared_metrics": {
+            "auroc": 0.7831215970961888,
+            "average_precision": 0.5935823045812681
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.7825342465753424,
+            "average_precision": 0.560175344276633
+          },
+          "coverage_of_sampled_endpoints": 1,
+          "threshold": 1.6422195145806842,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.4,
+              "average_precision": 0.8766666666666667
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 0.3333333333333333,
+              "average_precision": 0.5595238095238095
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 0.4,
+              "average_precision": 0.6075757575757575
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0.6666666666666666,
+              "average_precision": 0.8055555555555556
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 0.13333333333333333,
+              "average_precision": 0.30357142857142855
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.4,
+              "average_precision": 0.8766666666666667
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 3,
+            "fp": 3,
+            "fn_known": 37,
+            "tn": 70,
+            "precision": 0.5,
+            "recall_known": 0.075,
+            "recall_all": 0.075,
+            "normal_frame_false_positive_rate_known": 0.0410958904109589
+          }
+        },
+        "T": {
+          "shared_metrics": {
+            "auroc": 0.690562613430127,
+            "average_precision": 0.5716405265155876
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.6863013698630137,
+            "average_precision": 0.5264506474258737
+          },
+          "coverage_of_sampled_endpoints": 1,
+          "threshold": 1.0646143615384025,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 1,
+              "average_precision": 1
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 0.3333333333333333,
+              "average_precision": 0.5428571428571429
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 0.9333333333333333,
+              "average_precision": 0.9583333333333333
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0.6666666666666666,
+              "average_precision": 0.8055555555555556
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 0.9333333333333333,
+              "average_precision": 0.9166666666666666
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.8,
+              "average_precision": 0.9666666666666668
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 10,
+            "fp": 9,
+            "fn_known": 30,
+            "tn": 64,
+            "precision": 0.5263157894736842,
+            "recall_known": 0.25,
+            "recall_all": 0.25,
+            "normal_frame_false_positive_rate_known": 0.1232876712328767
+          }
+        },
+        "C": {
+          "shared_metrics": {
+            "auroc": 0.5648820326678766,
+            "average_precision": 0.4544290703727416
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.5648820326678766,
+            "average_precision": 0.4544290703727416
+          },
+          "coverage_of_sampled_endpoints": 0.8495575221238938,
+          "threshold": 1.2124103701427005,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 1,
+              "average_precision": 1
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 1,
+              "average_precision": 1
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 0.9333333333333333,
+              "average_precision": 0.9484126984126984
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0,
+              "average_precision": 0.47777777777777775
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 0.9333333333333333,
+              "average_precision": 0.9166666666666666
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.2,
+              "average_precision": 0.81
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 1,
+            "fp": 4,
+            "fn_known": 37,
+            "tn": 54,
+            "precision": 0.2,
+            "recall_known": 0.02631578947368421,
+            "recall_all": 0.025,
+            "normal_frame_false_positive_rate_known": 0.06896551724137931
+          }
+        },
+        "V": {
+          "shared_metrics": {
+            "auroc": 0.4823049001814882,
+            "average_precision": 0.3639620783525749
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.4821917808219178,
+            "average_precision": 0.32454915170794996
+          },
+          "coverage_of_sampled_endpoints": 1,
+          "threshold": 1.0069253199317052,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.4,
+              "average_precision": 0.8766666666666667
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 0.75,
+              "average_precision": 0.8928571428571428
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 1,
+              "average_precision": 0.9999999999999999
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0.5,
+              "average_precision": 0.6388888888888888
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 0.4,
+              "average_precision": 0.3833333333333333
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0,
+              "average_precision": 0.7100000000000002
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 2,
+            "fp": 6,
+            "fn_known": 38,
+            "tn": 67,
+            "precision": 0.25,
+            "recall_known": 0.05,
+            "recall_all": 0.05,
+            "normal_frame_false_positive_rate_known": 0.0821917808219178
+          }
+        },
+        "GV": {
+          "shared_metrics": {
+            "auroc": 0.7831215970961888,
+            "average_precision": 0.5935823045812681
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.7825342465753424,
+            "average_precision": 0.560175344276633
+          },
+          "coverage_of_sampled_endpoints": 1,
+          "threshold": 1.6422195145806842,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.4,
+              "average_precision": 0.8766666666666667
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 0.3333333333333333,
+              "average_precision": 0.5595238095238095
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 0.4,
+              "average_precision": 0.6075757575757575
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0.6666666666666666,
+              "average_precision": 0.8055555555555556
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 0.13333333333333333,
+              "average_precision": 0.30357142857142855
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.4,
+              "average_precision": 0.8766666666666667
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 3,
+            "fp": 3,
+            "fn_known": 37,
+            "tn": 70,
+            "precision": 0.5,
+            "recall_known": 0.075,
+            "recall_all": 0.075,
+            "normal_frame_false_positive_rate_known": 0.0410958904109589
+          }
+        }
+      },
+      "note": "Endpoint labels only. Unsampled frames have no decisions. Do not compare these AUROCs directly to the previous full-frame table."
+    },
+    "nearest_normal": {
+      "full_test_frames": 3685,
+      "sampled_endpoints": 113,
+      "shared_endpoints": 96,
+      "shared_coverage_of_sampled_endpoints": 0.8495575221238938,
+      "sampled_frame_fraction": 0.030664857530529173,
+      "shared_anomaly_endpoints": 38,
+      "models": {
+        "G": {
+          "shared_metrics": {
+            "auroc": 0.7990018148820327,
+            "average_precision": 0.6293437886109152
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.7976027397260274,
+            "average_precision": 0.5988933510586538
+          },
+          "coverage_of_sampled_endpoints": 1,
+          "threshold": 1.6021262899651179,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.4,
+              "average_precision": 0.8766666666666667
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 0.5,
+              "average_precision": 0.6220238095238095
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 0.6333333333333333,
+              "average_precision": 0.7438492063492061
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0.6666666666666666,
+              "average_precision": 0.8666666666666666
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 0.4666666666666667,
+              "average_precision": 0.5873015873015872
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.2,
+              "average_precision": 0.81
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 0,
+            "fp": 0,
+            "fn_known": 40,
+            "tn": 73,
+            "precision": 0,
+            "recall_known": 0,
+            "recall_all": 0,
+            "normal_frame_false_positive_rate_known": 0
+          }
+        },
+        "T": {
+          "shared_metrics": {
+            "auroc": 0.734573502722323,
+            "average_precision": 0.6754386358374544
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.7332191780821918,
+            "average_precision": 0.6071422915639625
+          },
+          "coverage_of_sampled_endpoints": 1,
+          "threshold": 1.0021837213629283,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.8,
+              "average_precision": 0.9666666666666668
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 0.5,
+              "average_precision": 0.7095238095238094
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 0.8666666666666667,
+              "average_precision": 0.9333333333333332
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0.6666666666666666,
+              "average_precision": 0.8055555555555556
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 1,
+              "average_precision": 1
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.4,
+              "average_precision": 0.8766666666666667
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 13,
+            "fp": 7,
+            "fn_known": 27,
+            "tn": 66,
+            "precision": 0.65,
+            "recall_known": 0.325,
+            "recall_all": 0.325,
+            "normal_frame_false_positive_rate_known": 0.0958904109589041
+          }
+        },
+        "C": {
+          "shared_metrics": {
+            "auroc": 0.6352087114337568,
+            "average_precision": 0.5141112261533015
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.6352087114337568,
+            "average_precision": 0.5141112261533015
+          },
+          "coverage_of_sampled_endpoints": 0.8495575221238938,
+          "threshold": 1.163975387883083,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 1,
+              "average_precision": 1
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 1,
+              "average_precision": 1
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 0.9333333333333333,
+              "average_precision": 0.9484126984126984
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0.3333333333333333,
+              "average_precision": 0.5888888888888888
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 1,
+              "average_precision": 1
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.2,
+              "average_precision": 0.81
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 1,
+            "fp": 4,
+            "fn_known": 37,
+            "tn": 54,
+            "precision": 0.2,
+            "recall_known": 0.02631578947368421,
+            "recall_all": 0.025,
+            "normal_frame_false_positive_rate_known": 0.06896551724137931
+          }
+        },
+        "V": {
+          "shared_metrics": {
+            "auroc": 0.44872958257713247,
+            "average_precision": 0.4139551236391064
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.47191780821917806,
+            "average_precision": 0.3850972974663413
+          },
+          "coverage_of_sampled_endpoints": 1,
+          "threshold": 1.012301792967412,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.8,
+              "average_precision": 0.9666666666666668
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 0.75,
+              "average_precision": 0.8928571428571428
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 1,
+              "average_precision": 0.9999999999999999
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0.5,
+              "average_precision": 0.6388888888888888
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 0.8666666666666667,
+              "average_precision": 0.8666666666666666
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0,
+              "average_precision": 0.7100000000000002
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 4,
+            "fp": 7,
+            "fn_known": 36,
+            "tn": 66,
+            "precision": 0.36363636363636365,
+            "recall_known": 0.1,
+            "recall_all": 0.1,
+            "normal_frame_false_positive_rate_known": 0.0958904109589041
+          }
+        },
+        "GV": {
+          "shared_metrics": {
+            "auroc": 0.7990018148820327,
+            "average_precision": 0.6293437886109152
+          },
+          "own_sampled_metrics": {
+            "auroc": 0.7976027397260274,
+            "average_precision": 0.5988933510586538
+          },
+          "coverage_of_sampled_endpoints": 1,
+          "threshold": 1.6021262899651179,
+          "per_sequence_shared": [
+            {
+              "sequence": "01",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.4,
+              "average_precision": 0.8766666666666667
+            },
+            {
+              "sequence": "02",
+              "frames": 7,
+              "anomaly_frames": 4,
+              "auroc": 0.5,
+              "average_precision": 0.6220238095238095
+            },
+            {
+              "sequence": "03",
+              "frames": 11,
+              "anomaly_frames": 6,
+              "auroc": 0.6333333333333333,
+              "average_precision": 0.7438492063492061
+            },
+            {
+              "sequence": "04",
+              "frames": 5,
+              "anomaly_frames": 3,
+              "auroc": 0.6666666666666666,
+              "average_precision": 0.8666666666666666
+            },
+            {
+              "sequence": "05",
+              "frames": 8,
+              "anomaly_frames": 3,
+              "auroc": 0.4666666666666667,
+              "average_precision": 0.5873015873015872
+            },
+            {
+              "sequence": "06",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "07",
+              "frames": 6,
+              "anomaly_frames": 5,
+              "auroc": 0.2,
+              "average_precision": 0.81
+            },
+            {
+              "sequence": "08",
+              "frames": 6,
+              "anomaly_frames": 6,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "09",
+              "frames": 7,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "10",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "11",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "12",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "13",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "14",
+              "frames": 5,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "sequence": "15",
+              "frames": 6,
+              "anomaly_frames": 0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ],
+          "decisions_sampled": {
+            "tp": 0,
+            "fp": 0,
+            "fn_known": 40,
+            "tn": 73,
+            "precision": 0,
+            "recall_known": 0,
+            "recall_all": 0,
+            "normal_frame_false_positive_rate_known": 0
+          }
+        }
+      },
+      "note": "Endpoint labels only. Unsampled frames have no decisions. Do not compare these AUROCs directly to the previous full-frame table."
+    }
+  }
+}
