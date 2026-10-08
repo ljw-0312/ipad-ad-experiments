@@ -51,10 +51,30 @@ drive.mount('/content/drive')
 url = 'https://raw.githubusercontent.com/ljw-0312/ipad-ad-experiments/main/experiments/IPAD_VJEPA_CPU.py'
 path = Path('/content/IPAD_VJEPA_CPU.py')
 path.write_bytes(urlopen(url).read())
-subprocess.run([sys.executable, '-u', str(path)], check=True)
+process = subprocess.Popen(
+    [sys.executable, '-u', str(path)],
+    stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+    text=True, bufsize=1
+)
+try:
+    for line in process.stdout:
+        print(line, end='', flush=True)
+    code = process.wait()
+    if code:
+        raise RuntimeError(f'V-JEPA process exited with code {code}; inspect the preceding log.')
+except KeyboardInterrupt:
+    process.terminate()
+    try:
+        process.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        process.kill()
+        process.wait()
+    raise
 ```
 
 CPU 런타임을 선택한다. 최초 실행 시 가중치 다운로드 및 첫 clip 추론이 오래 걸릴 수 있다. 계산 시간은 측정 전 확정하지 않는다.
+
+코랩에서는 `subprocess.run`의 기본 자식 프로세스 출력이 화면에 안 보일 수 있으므로, 위 코드는 표준 출력을 읽어 셀에 실시간으로 표시한다. 이전 셀이 계산 중이면 로그를 보기 위해 새 실행을 시작하지 않는다. Drive의 결과 보고서와 갱신되는 특징 캐시로 실행 상태를 확인할 수 있다.
 
 각 clip이 완료될 때 Drive의 `meeting_experiments/vjepa_video_cache`에 저장한다. 중단 후 동일 셀을 실행하면 완료 clip을 다시 추론하지 않는다. ZIP의 R01 이미지가 임시 공간에서 없어지면 다시 복구하지만 GroundingDINO와 DINOv2를 다시 실행하지 않는다.
 
